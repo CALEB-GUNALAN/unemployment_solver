@@ -8,6 +8,12 @@ const userSchema = new mongoose.Schema({
   skills: { type: [String], default: [] },
   interests: { type: [String], default: [] },
   profileCompleted: { type: Boolean, default: false },
+  isFreelancer: { type: Boolean, default: false },
+  isStartupMember: { type: Boolean, default: false },
+  startupName: { type: String, default: "" },
+  startupRole: { type: String, default: "" },
+  hourlyRate: { type: Number, default: 0 },
+  portfolio: { type: String, default: "" }, // URL to portfolio or resume
 });
 
 // Hash password before saving

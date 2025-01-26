@@ -44,3 +44,39 @@ exports.getUserProfile = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+// Update Freelance Profile
+exports.updateFreelanceProfile = async (req, res) => {
+  const { hourlyRate, portfolio } = req.body;
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.isFreelancer = true;
+    user.hourlyRate = hourlyRate;
+    user.portfolio = portfolio;
+    await user.save();
+
+    res.json({ message: "Freelance profile updated", user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// Update Startup Profile
+exports.updateStartupProfile = async (req, res) => {
+  const { startupName, startupRole } = req.body;
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.isStartupMember = true;
+    user.startupName = startupName;
+    user.startupRole = startupRole;
+    await user.save();
+
+    res.json({ message: "Startup profile updated", user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

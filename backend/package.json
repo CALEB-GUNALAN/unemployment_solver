@@ -18,9 +18,14 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.4"
   }
-"scripts": {
-  "start": "node src/app.js",
-  "dev": "nodemon src/app.js"
+{
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "engines": {
+    "node": "18.x"
+  }
 }
+
 
 }
